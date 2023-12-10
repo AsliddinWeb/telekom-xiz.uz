@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-vt9zqrxqnmtbr)pn#y54t8n-uxt#ikqlsip)*q9-x-tao(zw#)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['telekom-xiz.uz', 'www.telekom-xiz.uz', '167.71.49.146', 'localhost']
 
 
 # Application definition
@@ -70,6 +70,12 @@ WSGI_APPLICATION = 'TELEKOM.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'telekom_db',
+        'USER': 'telekom_user',
+        'PASSWORD': 'Bo^725726lyKGerYJ',
+        'HOST': 'localhost',
+        'PORT': '',
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
@@ -111,8 +117,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
-# STATIC_ROOT = 'static/'
+#STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = 'static/'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 MEDIA_URL = '/media/'
