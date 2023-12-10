@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div role="main" class="main">
+    <section class="page-header page-header-modern bg-color-grey page-header-md">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+                    <h1 class="text-dark font-weight-bold text-8">{{ service.title }}</h1>
+                </div>
+                <div class="col-md-12 align-self-center order-1">
+                    <ul class="breadcrumb d-block text-center">
+                        <li><a href="{% url 'home_page' %}">Bosh sahifa</a></li>
+                        <li class="active">Servislar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container py-4">
+
+        <div class="row">
+            <div class="col">
+                <div class="blog-posts single-post">
+
+                    <article class="post post-large blog-single-post border-0 m-0 p-0">
+                        <div class="post-image ms-0">
+                            <a>
+                                <img src="{{ service.image.url }}"
+                                     class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="{{ service.title }}">
+                            </a>
+                        </div>
+
+                        <div class="post-content ms-0">
+
+                            <h2 class="font-weight-semi-bold">
+                                <a>{{ service.title }}</a>
+                            </h2>
+
+                            <div class="post-meta">
+                                <span><i class="far fa-folder"></i>
+                                    <a>{{ service.category }}</a>
+                                </span>
+                            </div>
+
+                            <p>{{ service.body }}</p>
+                            <div class="post-block mt-4 pt-2 post-author">
+                                <h4 class="mb-3">Kompaniya</h4>
+                                <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
+                                    <a href="{{ service.author_site }}">
+                                        <img src="{{ service.author_image.url }}" alt="{{ service.author_site }}">
+                                    </a>
+                                </div>
+                                <p><strong class="name">
+                                    <a href="{{ service.author_site }}" class="text-4 pb-2 pt-2 d-block">{{ service.author }}</a>
+                                </strong>
+                                </p>
+                                <p>{{ service.author_body }}</p>
+                            </div>
+
+                            <div class="post-block mt-5 post-leave-comment">
+                                <h4 class="mb-3">Ariza yuborish:</h4>
+
+                                <form class="contact-form p-4 rounded bg-color-grey" method="POST">
+                                    {% csrf_token %}
+                                    <div class="p-2">
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label class="form-label required font-weight-bold text-dark">Xizmat turi:</label>
+                                                <select class="form-control mb-3">
+													<option selected disabled>{{ service.title }}</option>
+												</select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label class="form-label required font-weight-bold text-dark">Ism Familiya</label>
+                                                <input type="text" value=""
+                                                       data-msg-required="Please enter your name." maxlength="100"
+                                                       class="form-control" name="name" required="">
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label class="form-label required font-weight-bold text-dark">Telefon raqam</label>
+                                                <input type="tel" value=""
+                                                       maxlength="100" class="form-control" name="phone"
+                                                       required="">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label class="form-label required font-weight-bold text-dark">Manzil</label>
+                                                <textarea maxlength="500" rows="3"
+                                                          class="form-control" name="address"
+                                                          required=""></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col mb-0">
+                                                <input type="submit" value="ARIZA YUBORISH"
+                                                       class="btn btn-primary btn-modern"
+                                                       data-loading-text="Loading...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div role="main" class="main">
+    <section class="page-header page-header-modern bg-color-grey page-header-md">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+                    <h1 class="text-dark font-weight-bold text-8">Bog'lanish</h1>
+                </div>
+                <div class="col-md-12 align-self-center order-1">
+                    <ul class="breadcrumb d-block text-center">
+                        <li><a href="{% url 'home_page' %}">Bosh sahifa</a></li>
+                        <li class="active">Kontaktlar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container py-4 mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-6 mb-5 mb-lg-0">
+                <div class="overflow-hidden mb-1">
+                    <h2 class="text-color-dark font-weight-semibold text-6 line-height-3 mb-0 pe-5 me-5 appear-animation animated maskUp appear-animation-visible"
+                        data-appear-animation="maskUp" data-appear-animation-delay="1200"
+                        style="animation-delay: 1200ms;">{{ contact_info.title }}</h2>
+                </div>
+                <div class="overflow-hidden mb-3">
+                    <span class="d-block mb-0 appear-animation animated maskUp appear-animation-visible"
+                          data-appear-animation="maskUp" data-appear-animation-delay="1400"
+                          style="animation-delay: 1400ms;">{{ contact_info.cap_title }}</span>
+                </div>
+                <p class="lead pe-5 mb-4 pb-2 appear-animation animated fadeInUpShorter appear-animation-visible"
+                   data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1600"
+                   style="animation-delay: 1600ms;">{{ contact_info.body }}</p>
+                <div class="feature-box align-items-center mb-4 pb-1 appear-animation animated fadeInUpShorter appear-animation-visible"
+                     data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1800"
+                     style="animation-delay: 1800ms;">
+                    <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-secondary top-0">
+                        <i class="icon-globe icons position-relative"></i>
+                    </div>
+                    <div class="feature-box-info">
+                        <h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">Manzil</h4>
+                        <p class="mb-0">{{ contact_info.adress }}</p>
+                    </div>
+                </div>
+                <div class="feature-box align-items-center mb-4 pb-1 appear-animation animated fadeInUpShorter appear-animation-visible"
+                     data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2000"
+                     style="animation-delay: 2000ms;">
+                    <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-quaternary top-0">
+                        <i class="icon-call-in icons position-relative top-2 right-1"></i>
+                    </div>
+                    <div class="feature-box-info">
+                        <h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">Telefon raqam</h4>
+                        <p class="mb-0"><a href="tel:{{ contact_info.phone }}" class="custom-text-color-grey-1">{{ contact_info.phone }}</a></p>
+                    </div>
+                </div>
+                <div class="feature-box align-items-center appear-animation animated fadeInUpShorter appear-animation-visible"
+                     data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2200"
+                     style="animation-delay: 2200ms;">
+                    <div class="feature-box-icon custom-feature-box-icon-size-1 bg-color-secondary top-0">
+                        <i class="icon-envelope icons position-relative top-1"></i>
+                    </div>
+                    <div class="feature-box-info">
+                        <h4 class="font-weight-bold line-height-1 custom-font-size-1 mb-1">E-mail</h4>
+                        <p class="mb-0"><a href="mailto:{{ contact_info.email }}" class="custom-text-color-grey-1">{{ contact_info.email }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10 col-lg-6 appear-animation animated fadeInRightShorter appear-animation-visible"
+                 data-appear-animation="fadeInRightShorter" data-appear-animation-delay="2000"
+                 style="animation-delay: 2000ms;">
+                <div class="card border-0 custom-border-radius-1 box-shadow-1 p-2">
+                    <div class="card-body p-4 z-index-1">
+                        <h4 class="text-color-dark font-weight-semibold text-5 line-height-3 ls-0 mb-1 mt-2 pe-5 me-5">
+                            Xabar yuborish</h4>
+                        <p class="pb-2 mb-4">Kerakli ma'lumotlarni kiriting</p>
+
+                        <form class="contact-form" method="POST">
+                            {% csrf_token %}
+                            <div class="contact-form-success alert alert-success d-none mt-4">
+                                <strong>Success!</strong> Your message has been sent to us.
+                            </div>
+
+                            <div class="contact-form-error alert alert-danger d-none mt-4">
+                                <strong>Error!</strong> There was an error sending your message.
+                                <span class="mail-error-message text-1 d-block"></span>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col mb-3">
+                                    <input type="text" value="" data-msg-required="Please enter your name."
+                                           maxlength="100" class="form-control"
+                                           name="name" id="name" placeholder="Ismingiz..." required="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col mb-3">
+                                    <input type="tel" value="" maxlength="100"
+                                           class="form-control" name="phone" id="phone"
+                                           placeholder="Telefon raqam" required="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col mb-3">
+                                    <textarea maxlength="5000" data-msg-required="Please enter your message." rows="6"
+                                              class="form-control" name="message"
+                                              id="message" placeholder="Xabar matnini kiriting..." required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col mb-3">
+                                    <input type="submit" value="YUBORISH"
+                                           class="btn btn-gradient btn-rounded font-weight-bold px-5 py-3 text-3"
+                                           data-loading-text="Loading...">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

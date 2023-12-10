@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div role="main" class="main">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success text-center text-4">
+                    <strong>✅ Tabriklaymiz! Arizangiz qabul qilindi!</strong>
+                    <strong class="text-center">
+                        Arizangiz ID raqami: <span class="badge bg-success">{{ service_order.id }}</span>
+                    </strong>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

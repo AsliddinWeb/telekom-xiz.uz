@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div role="main" class="main">
+    <section class="page-header page-header-modern bg-color-grey page-header-md">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+                    <h1 class="text-dark font-weight-bold text-8">{{ news.title }}</h1>
+                </div>
+                <div class="col-md-12 align-self-center order-1">
+                    <ul class="breadcrumb d-block text-center">
+                        <li><a href="{% url 'home_page' %}">Bosh sahifa</a></li>
+                        <li class="active">Yangiliklar</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container py-4">
+
+        <div class="row">
+            <div class="col">
+                <div class="blog-posts single-post">
+
+                    <article class="post post-large blog-single-post border-0 m-0 p-0">
+                        <div class="post-image ms-0">
+                            <a>
+                                <img src="{{ news.image.url }}"
+                                     class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="{{ news.title }}">
+                            </a>
+                        </div>
+
+                        <div class="post-date ms-0">
+                            <span class="day">{{ news.created_at|date:"d" }}</span>
+                            <span class="month">{{ news.created_at|date:"M" }}</span>
+                        </div>
+
+                        <div class="post-content ms-0">
+
+                            <h2 class="font-weight-semi-bold"><a>{{ news.title }}</a></h2>
+
+                            <div class="post-meta">
+                                <span><i class="far fa-folder"></i><a>{{ news.category }}</a></span>
+                            </div>
+                            <p>{{ news.body }}</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
