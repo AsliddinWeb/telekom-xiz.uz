@@ -6,6 +6,9 @@ class ServiceCategory(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Servislar kategoriyalari"
+
 class Services(models.Model):
     title = models.CharField(max_length=455)
     image = models.ImageField(upload_to='services')
@@ -23,6 +26,9 @@ class Services(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Barcha servislar"
 
 STATUS_CHOICES = (
     ('1', "Qabul qilindi"),
@@ -42,3 +48,6 @@ class ServiceOrder(models.Model):
 
     def __str__(self):
         return self.service.title
+
+    class Meta:
+        verbose_name_plural = "Buyurtmalar"

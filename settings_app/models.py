@@ -9,12 +9,18 @@ class SeoSettings(models.Model):
     def __str__(self):
         return self.author
 
+    class Meta:
+        verbose_name_plural = "Seo sozlamalari"
+
 class SiteSettings(models.Model):
     title = models.TextField()
     logo = models.ImageField(upload_to='logos')
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Logo va title sozlamalari"
 
 class OneHeader(models.Model):
     title = models.CharField(max_length=455)
@@ -23,6 +29,9 @@ class OneHeader(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Asosiy menyular"
 
 class FooterSettings(models.Model):
     cap_title = models.CharField(max_length=255)
@@ -33,6 +42,9 @@ class FooterSettings(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Footer sozlamalari"
+
 class FooterLinks(models.Model):
     title = models.CharField(max_length=255)
     link = models.CharField(max_length=255)
@@ -40,10 +52,16 @@ class FooterLinks(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Footer linklar"
+
 class FooterAddresInfo(models.Model):
     addres = models.TextField()
     phone = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name_plural = "Footer manzil sozlamalari"
 
 class SocialNetworks(models.Model):
     title = models.CharField(max_length=255)
@@ -53,6 +71,9 @@ class SocialNetworks(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Ijtimoiy tarmoqlar"
+
 class TelegramBotSettings(models.Model):
     username = models.CharField(max_length=455)
     token = models.CharField(max_length=555)
@@ -60,3 +81,6 @@ class TelegramBotSettings(models.Model):
 
     def __str__(self):
         return self.username
+
+    class Meta:
+        verbose_name_plural = "Telegram bot sozlamalari"

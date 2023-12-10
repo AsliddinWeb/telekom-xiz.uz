@@ -14,12 +14,18 @@ class HomeWelcome(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Hush kelibsiz"
+
 class HomeIqtibos(models.Model):
     title = models.TextField()
     author = models.CharField(max_length=455)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Iqtibos"
 
 class HomeStep(models.Model):
     title = models.CharField(max_length=255)
@@ -40,6 +46,9 @@ class HomeStep(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Bosqichlar"
+
 class HomeSerives(models.Model):
     title = models.CharField(max_length=455)
     icon = models.CharField(max_length=255)
@@ -57,6 +66,9 @@ class HomeSerives(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Servislar"
+
 class HomeCounter(models.Model):
     title = models.CharField(max_length=455)
     icon = models.CharField(max_length=455)
@@ -66,6 +78,9 @@ class HomeCounter(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Counter"
+
 class HomeHamkor(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='home-images')
@@ -73,6 +88,9 @@ class HomeHamkor(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Hamkorlar"
 
 # --------------------------------------- Contact Page -----------------------
 class ContactInfo(models.Model):
@@ -87,6 +105,9 @@ class ContactInfo(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Kontakt sahifasi"
+
 class ContactRequests(models.Model):
     name = models.CharField(max_length=455)
     phone = models.CharField(max_length=455)
@@ -94,3 +115,6 @@ class ContactRequests(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Tizimga kelgan xabarlar"
